@@ -1,5 +1,5 @@
 opam-version: "1.2"
-name: "robbins"
+name: "tutorial_material"
 maintainer: "Laurent.Thery@inria.fr"
 homepage: "https://github.com/mathcomp/tutorial_material"
 bug-reports: "https://github.com/mathcomp/tutorial_material/issues"
