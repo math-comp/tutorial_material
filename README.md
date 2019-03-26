@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mathcomp/tutorial_material.svg?branch=master)](https://travis-ci.org/mathcomp/tutorial_material)
+[![Build Status](https://travis-ci.org/math-comp/tutorial_material.svg?branch=master)](https://travis-ci.org/math-comp/tutorial_material)
 
 ## Tutorial materials
 
