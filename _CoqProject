@@ -1,1 +1,23 @@
+-R . tutorial
+
+-arg -w -arg -notation-overridden
+-arg -w -arg -undo-batch-mode
+
 AnSsreflectTutorial/tutorial_Gonthier_LeRoux.v
+
+SummerSchoolSophia/lesson1.v
+SummerSchoolSophia/lesson2.v
+SummerSchoolSophia/lesson3.v
+SummerSchoolSophia/lesson4.v
+SummerSchoolSophia/lesson5.v
+SummerSchoolSophia/lesson6.v
+SummerSchoolSophia/lesson7.v
+SummerSchoolSophia/lesson8.v
+SummerSchoolSophia/exercise1_solution.v
+SummerSchoolSophia/exercise2_solution.v
+SummerSchoolSophia/exercise3_solution.v
+SummerSchoolSophia/exercise4_solution.v
+SummerSchoolSophia/exercise5_solution.v
+SummerSchoolSophia/exercise6_solution.v
+SummerSchoolSophia/exercise7_solution.v
+SummerSchoolSophia/exercise8_solution.v
