@@ -77,7 +77,7 @@ Definition suml := foldl addn 0.
 *)
 Lemma foldl_addE n s : foldl addn n s = n + suml s.
 Proof.
-(*D*)elim: s n => //= x s IHs n.
+(*D*)elim: s n => [n | x s IHs n] /=; first by rewrite addn0.
 (*D*)by rewrite /suml/= !IHs add0n addnA.
 (*A*)Qed.
 (**
@@ -211,7 +211,8 @@ Lemma mysum_recl m n F : m <= n ->
   \mysum_(m <= i < n.+1) F i = \mysum_(m <= i < n) F i + F n.
 Proof.
 (*D*)move=> leq_mn; rewrite /mysum subSn// -addn1 iota_add subnKC//= foldr_cat/=.
-(*D*)by elim: (iota _ _) (F n) => [|x s IHs] k //=; rewrite IHs addnA.
+(*D*)elim: (iota _ _) (F n) => [|x s IHs] k /=; first by rewrite addn0.
+(*D*)by rewrite IHs addnA.
 (*A*)Qed.
 (**
 #</div>#

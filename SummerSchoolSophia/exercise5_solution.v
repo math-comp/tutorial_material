@@ -257,7 +257,7 @@ Lemma lenP: forall n m, reflect (exists k, k + n = m) (len n m).
 Proof.
 (*D*) move=> n; elim: n.
 (*D*)   move=> m. apply: (iffP idP).
-(*D*)     move=> _. by exists m.
+(*D*)     move=> _. by exists m; apply: addn0.
 (*D*)     by [].
 (*D*)   move=> n IH m. apply: (iffP idP).
 (*D*)     case: m. by [].

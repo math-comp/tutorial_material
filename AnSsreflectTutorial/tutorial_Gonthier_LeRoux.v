@@ -249,6 +249,9 @@ Proof. by []. Qed.
 
 Print nat_ind.
 
+(** This was added for compatibility for mathcomp 1.9.0 **)
+Hint Resolve addn0 addnS.
+
 Lemma plus_commute : forall n1 m1, n1 + m1 = m1 + n1.
 Proof.
 by elim=> [| n IHn m]; [elim | rewrite -[n.+1 + m]/(n + m).+1 IHn; elim: m].

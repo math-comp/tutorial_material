@@ -9,9 +9,10 @@ From mathcomp Require Import all_ssreflect.
 Lemma sum_mull f (k n : nat) :
   k * (\sum_(0 <= i < n) f i) = \sum_(0 <= i < n) (k * f i).
 Proof.
-(*D*)(* elim: n => [|n IH]; first by rewrite !big_geq. *)
-(*D*)(* by rewrite !big_nat_recr //= mulnDr IH. *)
-(*D*)by apply: (big_morph (fun n => k * n)) => // x y; rewrite mulnDr.
+(*D*) (* elim: n => [|n IH]; first by rewrite !big_geq ?muln0. *)
+(*D*) (* by rewrite !big_nat_recr //= mulnDr IH. *)
+(*D*)by apply: (big_morph (fun n => k * n)) => [x y|];
+        [rewrite mulnDr | rewrite muln0].
 Qed.
 
 (** *** Exercise 2 :

@@ -234,7 +234,6 @@ Check {set 'I_4} : Type.
 Check forall a : {set 'I_4}, (a == set0) || (1 < #| a | < 4).
 Print set_type.
 Check {ffun 'I_4 -> bool} : Type.
-Print finfun_type.
 Check [eqType of #| 'I_4 | .-tuple bool].
 Check [finType of #| 'I_4 | .-tuple bool].
 
