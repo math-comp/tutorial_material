@@ -249,12 +249,12 @@ Proof. by []. Qed.
 
 Print nat_ind.
 
-(** This was added for compatibility for mathcomp 1.9.0 **)
-Hint Resolve addn0 addnS.
-
 Lemma plus_commute : forall n1 m1, n1 + m1 = m1 + n1.
 Proof.
-by elim=> [| n IHn m]; [elim | rewrite -[n.+1 + m]/(n + m).+1 IHn; elim: m].
+elim=> [m1 | n1 IHn1 m1].
+  by elim: m1 => // m1 IHm1; rewrite -[0 + m1.+1]/(0 + m1).+1 IHm1.
+rewrite -[n1.+1 + m1]/(n1 + m1).+1 IHn1.
+by elim: m1 => // m1 IHm1; rewrite -[m1.+1 + n1]/(m1 + n1).+1 IHm1.
 Qed.
 
 Check edivn_rec.
