@@ -2,6 +2,7 @@
 
 -arg -w -arg -notation-overridden
 -arg -w -arg -undo-batch-mode
+-arg -w -arg -ambiguous-paths
 
 AnSsreflectTutorial/tutorial_Gonthier_LeRoux.v
 
