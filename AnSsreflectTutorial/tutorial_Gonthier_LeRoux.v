@@ -322,7 +322,7 @@ Proof.
 move=> d q r lt_rd; have d_pos: 0 < d by exact: leq_trans lt_rd.
 set m := q * d + r; have: m = q * d + r by [].
 set d' := d; have: d' = d by [].
-case: (edivnP_right m d') => {m d'} m d' q' r' -> lt_r'd' d'd q'd'r'.
+case: (edivnP_right m d') => {d'}m d' q' r' -> lt_r'd' d'd q'd'r'.
 move: q'd'r' lt_r'd' lt_rd; rewrite d'd d_pos {d'd m} /=.
 wlog: q q' r r' / q <= q' by case (ltnP q q'); last symmetry; eauto.
 rewrite leq_eqVlt; case: eqP => [-> _|_] /=; first by move/addnI->.
