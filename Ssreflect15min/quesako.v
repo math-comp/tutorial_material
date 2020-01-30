@@ -52,7 +52,7 @@ Definition f4 := 773951836515617.
 
 (* We can check this identity using Coq: *)
 Lemma factors_c : c = f1 * f2 * f3 * f4. 
-(* the proof goes "by computation, because '_ * _' is a program *)
+(* the proof goes "by computation", because '_ * _' is a program *)
 Proof. Time reflexivity. Qed.
 
 (* Computational proofs on moderate size objects, like in the above example
