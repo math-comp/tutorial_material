@@ -60,7 +60,7 @@ already require thinking a bit about data-structures and complexity. *)
 Close Scope Z_scope.
 
 (* E.g. unary numbes are not an option. *)
-Fail Eval compute in (1000 * 1000 : nat).
+(* Fail Eval compute in (1000 * 1000 : nat). *)
 
 (* A reflection-based tactic replace explicit deduction steps, 
 logged in proof terms, with computational steps, checked by the kernel's 
@@ -197,6 +197,8 @@ Features associated with this objective are:
    Demo: Prove that the concatenation (s1 ++ s2) of two lists is
    duplicate-free if and only if (s2 ++ s2) is also duplicate-free. **)
 
+From mathcomp Require Import all_ssreflect.
+
  Module ExerciseSeq.
 
 (* Implement a unary predicate on lists characterizing
@@ -219,7 +221,6 @@ Inductive list_norepet (A: Type) : list A -> Prop :=
 
 
 (* Mathematical Components's take: *)
-From mathcomp Require Import all_ssreflect.
 
 
 Section ListNorepet.
