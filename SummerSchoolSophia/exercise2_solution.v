@@ -88,7 +88,7 @@ Lemma find_me p q :  ~~ p = q -> p (+) q.
 *)
 
 Print maxn.
-Search maxn in ssrnat.
+Search maxn inside ssrnat.
 
 (** ***
     We define the maxinum of three number as 

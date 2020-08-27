@@ -273,7 +273,7 @@ Notice the naming convention.
 
 Print negb.
 Locate "~~".
-Search negb in ssr.ssrbool.
+Search negb inside ssr.ssrbool.
 
 Lemma negbK (b : bool) : ~~ (~~ b) = b.
 Proof. Fail by []. Abort.
@@ -377,8 +377,8 @@ But maybe someone proved it already...
 
 #<div>#
 *)
-Search _ (_ * 0) in ssrnat. (*   :-(   *)
-Search _ muln 0 in ssrnat.
+Search _ (_ * 0) inside ssrnat. (*   :-(   *)
+Search _ muln 0 inside ssrnat.
 Print right_zero.
 Search right_zero.
 

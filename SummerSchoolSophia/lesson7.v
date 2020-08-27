@@ -369,7 +369,7 @@ Lemma sum_odd_even_all n :
   \sum_(0 <= i < n) i = 
   \sum_(0 <= i < n | odd i) i + \sum_(0 <= i < n | ~~ odd i) i.
 Proof.
-Search _ (~~ _) in bigop.
+Search _ (~~ _) inside bigop.
 by rewrite (bigID odd).
 Qed.
 
