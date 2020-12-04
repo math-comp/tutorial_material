@@ -59,11 +59,11 @@ Canonical even_odd (m : odd_nat) : even_nat :=
 (* Now let's deal with multiplication *)
 Lemma odd_mulP (n m : odd_nat) : odd (n * m).
 Proof.
-(*D*)by rewrite odd_mul !oddP.
+(*D*)by rewrite oddM !oddP.
 Qed.
 
 (* Teach Coq that [*] preserves being odd *)
-Canonical odd_mul (n m : odd_nat) : odd_nat :=
+Canonical oddM (n m : odd_nat) : odd_nat :=
 (*D*)Odd (n * m) (odd_mulP n m).
 
 (* Enjoy! *)
