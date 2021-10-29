@@ -210,7 +210,7 @@ Notation "\mysum_ ( m <= i < n ) F" := (mysum m n (fun i => F))
 Lemma mysum_recl m n F : m <= n ->
   \mysum_(m <= i < n.+1) F i = \mysum_(m <= i < n) F i + F n.
 Proof.
-(*D*)move=> leq_mn; rewrite /mysum subSn// -addn1 iota_add subnKC//= foldr_cat/=.
+(*D*)move=> leq_mn; rewrite /mysum subSn// -addn1 iotaD subnKC//= foldr_cat/=.
 (*D*)elim: (iota _ _) (F n) => [|x s IHs] k /=; first by rewrite addn0.
 (*D*)by rewrite IHs addnA.
 (*A*)Qed.
