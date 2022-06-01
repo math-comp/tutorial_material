@@ -455,11 +455,12 @@ Eval compute in (val two).
 
 (* Orelse we can cast the definition with the expected type and use *)
 (*the generic subType constructor Sub *)
-Definition two' : 'I_3 := Sub 2 (ltnSn 3) : [subType of 'I_3].
+Definition two' : [subType of 'I_3] := Sub 2 (ltnSn 3).
+Check (two' : 'I_3).
 
 (* But in fact we only need to claim that the boolean test will *)
 (*evaluate to true, and let the system check that for us *)
-Definition two'' : 'I_3 := Sub 2 (refl_equal true) : [subType of 'I_3].
+Definition two'' : [subType of 'I_3] := Sub 2 (refl_equal true).
 Check two''.
 Eval compute in (val two'').
 
