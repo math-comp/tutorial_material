@@ -5,7 +5,11 @@
 -arg -w -arg -ambiguous-paths
 
 AnSsreflectTutorial/tutorial_Gonthier_LeRoux.v
-
+AnIntroductionToSmallScaleReflectionInCoq/section3.v
+AnIntroductionToSmallScaleReflectionInCoq/section4.v
+AnIntroductionToSmallScaleReflectionInCoq/section5.v
+AnIntroductionToSmallScaleReflectionInCoq/section6.v
+AnIntroductionToSmallScaleReflectionInCoq/section7.v
 SummerSchoolSophia/lesson1.v
 SummerSchoolSophia/lesson2.v
 SummerSchoolSophia/lesson3.v
