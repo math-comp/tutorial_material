@@ -18,8 +18,7 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 Scripts associated to tutorials for mathcomp.
 
 It contains
-- [AnIntroductionToSmallScaleReflectionInCoq](https://github.com/math-comp/tutorial_material/blob/master/AnIntroductionToSmallScaleReflectionInCoq) associated to
-[An Introduction    ToSmallScaleReflectionInCoq]
+- [AnIntroductionToSmallScaleReflectionInCoq](https://github.com/math-comp/tutorial_material/blob/master/AnIntroductionToSmallScaleReflectionInCoq) associated to [An Introduction To Small Scale Reflection In Coq](https://hal.inria.fr/inria-00515548v4/document)
 - [AnSsreflectTutorial](https://github.com/math-comp/tutorial_material/blob/master/AnSsreflectTutorial) associated to [An Ssreflect Tutorial](https://hal.inria.fr/inria-00407778)
 - [SummerSchoolSophia](https://github.com/math-comp/tutorial_material/tree/master/SummerSchoolSophia) associated to a [5-day School](https://team.inria.fr/marelle/en/coq-winter-school-2018/) on Mathematical Components at Sophia-Antipolis
 
