@@ -227,10 +227,12 @@ Print mult.
 Print le.
 
 Lemma concrete_le : le 1 3.
-Proof.  by apply: (Le.le_trans _ 2); apply: Le.le_n_Sn. Qed.
+Proof.
+by apply: (PeanoNat.Nat.le_trans _ 2); apply: PeanoNat.Nat.le_succ_diag_r.
+Qed.
 
 Lemma concrete_big_le : le 16 64.
-Proof. by auto 47 with arith. Qed.
+Proof. by auto 50. Qed.
 
 Print leq.
 

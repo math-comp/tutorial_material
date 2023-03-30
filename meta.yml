@@ -40,12 +40,12 @@ supported_coq_versions:
 dependencies:
 - opam:
     name: coq-mathcomp-ssreflect
-    version: '{(>= "1.15.0")}'
+    version: '{(>= "1.16.0")}'
   description: |-
-    [MathComp ssreflect 1.15 or later](https://math-comp.github.io)
+    [MathComp ssreflect 1.16 or later](https://math-comp.github.io)
 
 tested_coq_opam_versions:
-- version: '1.15.0-coq-8.15'
+- version: '1.16.0-coq-8.16'
   repo: 'mathcomp/mathcomp'
 
 namespace: tutorial_material
