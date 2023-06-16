@@ -60,7 +60,7 @@ already require thinking a bit about data-structures and complexity. *)
 Close Scope Z_scope.
 
 (* E.g. unary numbes are not an option. *)
-Fail Eval compute in (1000 * 1000 : nat).
+Fail Eval compute in (10000 * 10000 : nat).
 
 (* A reflection-based tactic replace explicit deduction steps, 
 logged in proof terms, with computational steps, checked by the kernel's 
