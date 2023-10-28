@@ -27,15 +27,23 @@ It contains
 - Author(s):
   - Laurent Théry
 - License: [MIT License](LICENSE)
-- Compatible Coq versions: 8.17 or later
+- Compatible Coq versions: 8.18 or later
 - Additional dependencies:
-  - [MathComp ssreflect 1.17 or later](https://math-comp.github.io)
+  - [MathComp ssreflect 2.1 or later](https://math-comp.github.io)
 - Coq namespace: `tutorial_material`
 - Related publication(s): none
 
 ## Building and installation instructions
 
-To build and install manually, do:
+The easiest way to install the latest released version of tutorial_material
+is via [OPAM](https://opam.ocaml.org/doc/Install.html):
+
+```shell
+opam repo add coq-released https://coq.inria.fr/opam/released
+opam install coq-tutorial_material
+```
+
+To instead build and install manually, do:
 
 ``` shell
 git clone https://github.com/math-comp/tutorial_material.git

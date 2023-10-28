@@ -1,7 +1,9 @@
 (******************************************************************************)
 (* Solutions of exercises : Type inference by canonical structures            *)
 (******************************************************************************)
+(* This has been updated with HB *)
 
+From HB Require Import structures.
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat seq path.
 From mathcomp Require Import choice fintype tuple finset.
 
@@ -13,10 +15,11 @@ Import Prenex Implicits.
 (* Exercise 6.1.1                                                             *)
 (******************************************************************************)
 
+Definition unit1 := unit.
 Lemma tuto_unit_enumP : Finite.axiom [:: tt]. Proof. by case. Qed.
 
-Definition tuto_unit_finMixin := FinMixin tuto_unit_enumP.
-Canonical Structure unit_finType := Eval hnf in FinType unit unit_finMixin.
+#[verbose]
+HB.instance Definition _ := isFinite.Build unit1 tuto_unit_enumP.
 
 
 (******************************************************************************)
@@ -369,8 +372,8 @@ Variable T : Type.
 Structure tuto_tuple_of  : Type := 
   TutoTuple {tuto_tval :> seq T; _ : size tuto_tval == n}.
 
-Canonical Structure tuple_subType :=
-  Eval hnf in [subType for tuto_tval].
+#[verbose]
+HB.instance Definition _ := [isSub for tuto_tval].
 
 End Def.
 
@@ -429,10 +432,9 @@ Section OrdinalSub.
 
 Variable n : nat.
 
-Inductive ordinal : predArgType := Ordinal m of m < n.
+Coercion nat_of_ord i := let: Ordinal m _ := i in m.
 
-Canonical Structure ordinal_subType :=
-  [subType for nat_of_ord].
+HB.instance Definition _ := [isSub of ordinal for nat_of_ord].
 
 End OrdinalSub.
 *)
@@ -452,15 +454,14 @@ Definition two := Ordinal (ltnSn 2).
 Check two.
 Eval compute in (val two).
 
-
 (* Orelse we can cast the definition with the expected type and use *)
 (*the generic subType constructor Sub *)
-Definition two' : [subType of 'I_3] := Sub 2 (ltnSn 3).
+Definition two' : (SubType.clone _ _ _ 'I_3) := Sub 2 (ltnSn 3).
 Check (two' : 'I_3).
 
 (* But in fact we only need to claim that the boolean test will *)
 (*evaluate to true, and let the system check that for us *)
-Definition two'' : [subType of 'I_3] := Sub 2 (refl_equal true).
+Definition two'' : (SubType.clone _ _ _ 'I_3) := Sub 2 (refl_equal true).
 Check two''.
 Eval compute in (val two'').
 
@@ -471,11 +472,9 @@ Inductive odds : Set := Odds x of (odd x).
 Definition nat_of_odds i := let: Odds m _ := i in m.
 
 (* And now the subType definition, which should declared as canonical *)
-Canonical Structure odds_subType :=
-  Eval hnf in [subType for nat_of_odds by odds_rect].
+#[verbose]
+HB.instance Definition _ := [isSub for nat_of_odds by odds_rect].
 
-(* Check that this require a canonical structure by replacing above
-Canonical Structure odds_subType := by Definition .... := *)
 Definition three : odds := Sub 3 (refl_equal true).
 
 (******************************************************************************)
@@ -486,14 +485,11 @@ Definition three : odds := Sub 3 (refl_equal true).
 (* WARNING : to be effective when the library where they are defined *)
 (*is loaded, canonical structures should be defined (or re-defined) *)
 (*outside sections... *)
-Definition odds_eqMixin := Eval hnf in [eqMixin of odds by <:].
+#[verbose]
+HB.instance Definition _ := [Equality of odds by <:].
 
-Canonical Structure odds_eqType := Eval hnf in EqType odds odds_eqMixin.
-
-Definition tuto_tuple_eqMixin := Eval hnf in [eqMixin of n.-tuple T by <:].
-
-Canonical Structure tuto_tuple_eqType :=
-  Eval hnf in EqType (n.-tuple T) tuto_tuple_eqMixin.
+#[verbose]
+HB.instance Definition _ := [Equality of n.-tuple T by <:].
 
 Lemma tuto_map_tnth_enum : forall (t : n.-tuple T),
    map (tnth t) (enum 'I_n) = t.

@@ -3,6 +3,7 @@
 (******************************************************************************)
 
 
+From HB Require Import structures.
 From mathcomp Require Import ssreflect ssrfun ssrbool eqtype ssrnat seq path.
 From mathcomp Require Import choice fintype  tuple finset.
 
@@ -13,8 +14,9 @@ Import Prenex Implicits.
 (******************************************************************************)
 (* Exercise 5.1.1                                                             *)
 (******************************************************************************)
+(* 2023 This has been updated to use HB *)
 
-Record zmodule_mixin (T : Type) : Type := ZmoduleMixin {
+HB.mixin Record IsZmodule T := {
   zero : T;
   opp : T -> T;
   add : T -> T -> T;
@@ -24,33 +26,28 @@ Record zmodule_mixin (T : Type) : Type := ZmoduleMixin {
   add0m : left_inverse zero opp add
 }.
 
-Record zmodule : Type := Zmodule {
-  carrier :> Type;
-  spec : zmodule_mixin carrier
-}.
+#[short(type="zmodule")]
+HB.structure Definition Zmodule := { T of IsZmodule T }.
 
+#[verbose]
+HB.instance Definition Bool_Zmodule :=
+  IsZmodule.Build bool addbA addbC addFb addbb.
 
-Definition bool_zmoduleMixin := ZmoduleMixin addbA addbC addFb addbb.
-
-
-Definition bool_zmodule := Zmodule bool_zmoduleMixin.
-
-
-Definition zmadd (Z : zmodule) := add (spec Z).
-
-Notation "x \+ y" :=    (@zmadd _ x y)(at level 50,left associativity).
-
+Notation "x \+ y" := (add x y)(at level 50,left associativity).
 
 (* We first need to prove that zmadd is associative and commutative *)
 (* The proof consists in breaking successivly the two nested records *)
 (*to recover all the ingredients present in the zmodule_mixin. Then *)
 (*the goal becomes trivial because the associative and commutative *)
 (*requirements were present in the spec. *)
-Lemma zmaddA : forall m : zmodule, associative (@zmadd m).
-Proof. by case=> Mc []. Qed.
+(* Update with HB, associativity and commutativity are available directly *)
 
-Lemma zmaddC : forall m : zmodule, commutative (@zmadd m).
-Proof. by case=> Mc []. Qed.
+Lemma zmaddA : forall m : zmodule, associative (@add m).
+Proof. move=> m; apply: addA. Qed.
+
+Lemma zmaddC : forall m : zmodule, commutative (@add m).
+Proof. move=> m; apply: addC. Qed.
+
 
 (* No we can conveniently prove the lemma *)
 (* The ssreflect rewrite tactic allows rewrite redex selection by *)
@@ -69,19 +66,24 @@ Qed.
 (*by the system, which is possibliy syntactically slightly different *)
 (*from the definition typed by the user (specially in the case of *)
 (*nested pattern matching *)
-Print nat_eqType.
-Print nat_eqMixin.
+
+HB.about hasDecEq.
+HB.about hasDecEq.eq_op.
+HB.about hasDecEq.eqP.
+
 Print eqn.
 Check @eqnP.
 
-Print bool_eqType.
-Print bool_eqMixin.
 Print eqb.
 Check @eqbP.
 
 (* Look for nat, bool, Equality.sort in the answer of the command: *)
 Print Canonical Projections.
 (* The equations stored after these declarations are respectively :
+eqn <- hasDecEq.eq_op ( ssrnat.HB_unnamed_factory_1 )
+BinNat.N.eqb <- hasDecEq.eq_op ( ssrnat.HB_unnamed_factory_3 )
+eqb <- hasDecEq.eq_op ( HB_unnamed_factory_4 )
+
 [ Equality.sort ? == nat  ] => ? = nat_eqType
 [ Equality.sort ? == bool ] => ? = bool_eqType
 *)

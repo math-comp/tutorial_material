@@ -76,7 +76,7 @@ Check true == false.
 
 Check (@eq_op _ true false).
 
-Check (@eq_op bool_eqType true false).
+Check (@eq_op (Equality.clone _ bool) true false).
 
 Check 3 == 4.
 

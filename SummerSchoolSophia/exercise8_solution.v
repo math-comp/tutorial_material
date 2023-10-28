@@ -1,3 +1,4 @@
+From HB Require Import structures.
 From mathcomp Require Import all_ssreflect. 
 
 
@@ -76,12 +77,10 @@ Fail Check forall n m : odd_nat, n == m.
 
 (* Use the subtype machinery (that we used for tuples) in order
    to teach Coq that [odd_nat] is an [eqType] *)
-Canonical odd_subType :=
-(*D*)Eval hnf in [subType for oval].
-Definition odd_eqMixin :=
-(*D*)Eval hnf in [eqMixin of odd_nat by <:].
-Canonical odd_eqType :=
-(*D*)Eval hnf in EqType odd_nat odd_eqMixin.
+HB.instance Definition _ := 
+(*D*)  [isSub for oval].
+HB.instance Definition _ := 
+(*D*)[Equality of odd_nat by <:].
 
 (* Enjoy *)
 Check forall n m : odd_nat, n == m.
@@ -89,9 +88,8 @@ Check forall n m : odd_nat, n == m.
 (* Now do the same for [even_nat] *)
 Fail Check forall (n m : even_nat), m == n.
 
-(*D*)Canonical even_subType := Eval hnf in [subType for eval].
-(*D*)Definition even_eqMixin := Eval hnf in [eqMixin of even_nat by <:].
-(*D*)Canonical even_eqType := Eval hnf in EqType even_nat even_eqMixin.
+(*D*)HB.instance Definition _ := [isSub for eval].
+(*D*)HB.instance Definition _ :=  [Equality of even_nat by <:].
 
 Check forall (n m : even_nat), m == n.
 

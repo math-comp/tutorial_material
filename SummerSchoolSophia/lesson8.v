@@ -1,4 +1,4 @@
-
+From HB Require Import structures.
 From mathcomp Require Import all_ssreflect.
 
 Set Implicit Arguments.
@@ -34,12 +34,10 @@ Let's see another interface, the one of finite types
 #<div>#
 *)
 
-Print Finite.class_of. (* we extend choice with a mix in *)
+HB.about Finite.
+HB.about isFinite.
 
-Print Finite.mixin_of. (* we mix in countable and two specific
-                          fields: an enumeration and an axiom *)
-
-Print Finite.axiom.
+Print finite_axiom.
 Print count_mem.
 
 Eval lazy in count_mem 3 [:: 1;2;3;4;3;2;1].
@@ -94,7 +92,7 @@ Let's define the type of homogeneous tuples
 
 Module Tup.
 
-Record tuple_of n T := Tuple {
+Record tuple_of (n : nat) T := Tuple {
   tval  :> seq T;
   tsize :  size tval == n
 }.
@@ -180,10 +178,8 @@ that means we can craft an eqType.
 #<div>#
 *)
 
-
-Canonical tuple_subType n T := Eval hnf in [subType for (@tval n T)].
-Definition tuple_eqMixin n (T : eqType) := Eval hnf in [eqMixin of n .-tuple T by <:].
-Canonical tuple_eqType n (T : eqType) := Eval hnf in EqType (n .-tuple T) (tuple_eqMixin n T).
+HB.instance Definition _ (n : nat) T := [isSub for (@tval n T)].
+HB.instance Definition _ n (T : eqType) := [Equality of n .-tuple T by <:].
 
 Check [eqType of 3.-tuple nat].
 

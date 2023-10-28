@@ -34,18 +34,18 @@ license:
   identifier: MIT
 
 supported_coq_versions:
-  text: '8.17 or later'
-  opam: '{(>= "8.17")}'
+  text: '8.18 or later'
+  opam: '{(>= "8.18")}'
 
 dependencies:
 - opam:
     name: coq-mathcomp-ssreflect
-    version: '{(>= "1.17.0")}'
+    version: '{(>= "2.1.0")}'
   description: |-
-    [MathComp ssreflect 1.17 or later](https://math-comp.github.io)
+    [MathComp ssreflect 2.1 or later](https://math-comp.github.io)
 
 tested_coq_opam_versions:
-- version: '1.17.0-coq-8.17'
+- version: '2.1.0-coq-8.18'
   repo: 'mathcomp/mathcomp'
 
 namespace: tutorial_material
