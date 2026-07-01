@@ -132,23 +132,23 @@ Type inference
 
 *)
 
-Check [eqType of bool].
+Check (Equality.clone _ bool).
 
-Fail Check [eqType of bool -> bool].
+Fail Check (Equality.clone _ (bool -> bool)).
 
-Check [eqType of {ffun bool -> bool}].
+Check (Equality.clone _ {ffun bool -> bool}).
 
-Check [eqType of nat].
+Check (Equality.clone _ nat).
 
-Fail Check [eqType of nat -> nat].
+Fail Check (Equality.clone _ (nat -> nat)).
 
-Check [eqType of {ffun 'I_256 -> nat}].
+Check (Equality.clone _ {ffun 'I_256 -> nat}).
 
-Check [eqType of seq nat].
+Check (Equality.clone _ (seq nat)).
 
-Fail Check [eqType of seq (nat -> nat)].
+Fail Check (Equality.clone _ (seq (nat -> nat))).
 
-Check [eqType of seq {ffun 'I_256 -> nat}].
+Check (Equality.clone _ {ffun 'I_256 -> nat}).
 
 (**
 #</div>#
@@ -281,21 +281,21 @@ Variable chT : choiceType.
 
 Check (@sigW chT).
 
-Check [eqType of chT].
+Check (Equality.clone _ chT).
 
 Variable coT : countType.
 
-Check [countType of nat].
-Check [choiceType of coT].
-Check [choiceType of nat * nat].
-Check [choiceType of seq coT].
+Check (Countable.clone _ nat).
+Check (Choice.clone _ coT).
+Check (Choice.clone _ (nat * nat)%type).
+Check (Choice.clone _ (seq coT)).
 
 Variable fT : finType.
 
-Check [finType of bool].
-Check [finType of 'I_10].
-Check [finType of {ffun 'I_10 -> fT}].
-Check [finType of bool * bool].
+Check (Finite.clone _ bool).
+Check (Finite.clone _ 'I_10).
+Check (Finite.clone _ {ffun 'I_10 -> fT}).
+Check (Finite.clone _ (bool * bool)%type).
 
 End Interfaces.
 

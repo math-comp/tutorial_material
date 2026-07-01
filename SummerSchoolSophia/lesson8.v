@@ -104,8 +104,10 @@ Proof. by case: t => s /= /eqP. Qed.
 Example seq_on_tuple (n : nat) (t : n .-tuple nat) :
   size (rev [seq 2 * x | x <- rev t]) = size t.
 Proof. 
+(* 
 by rewrite map_rev revK size_map.
 Undo.
+*)
 rewrite size_tuple.
 Fail rewrite size_tuple.
 Abort.
@@ -181,7 +183,7 @@ that means we can craft an eqType.
 HB.instance Definition _ (n : nat) T := [isSub for (@tval n T)].
 HB.instance Definition _ n (T : eqType) := [Equality of n .-tuple T by <:].
 
-Check [eqType of 3.-tuple nat].
+Check (Equality.clone _ (3.-tuple nat)).
 
 Example test_eqtype (x y : 3.-tuple nat) : x == y -> True.
 Proof.
@@ -199,8 +201,8 @@ many other "promotions"
 #<div>#
 *)
 
-Check [finType of 3.-tuple bool].
-Fail Check [finType of 3.-tuple nat].
+Check (Finite.clone _ (3.-tuple bool)).
+Fail Check (Finite.clone _ (3.-tuple nat)).
 
 (**
 #<div/>#
@@ -213,8 +215,8 @@ numbers smaller than n.
 *)
 
 Print ordinal.
-Check [eqType of 'I_3].
-Check [finType of 'I_3].
+Check (Equality.clone _ 'I_3).
+Check (Finite.clone _ 'I_3).
 
 About tnth. (* like the safe nth function for vectors *)
 
@@ -230,11 +232,11 @@ Check {set 'I_4} : Type.
 Check forall a : {set 'I_4}, (a == set0) || (1 < #| a | < 4).
 Print set_type.
 Check {ffun 'I_4 -> bool} : Type.
-Check [eqType of #| 'I_4 | .-tuple bool].
-Check [finType of #| 'I_4 | .-tuple bool].
+Check (Equality.clone _ (#| 'I_4 | .-tuple bool)).
+Check (Finite.clone _ (#| 'I_4 | .-tuple bool)).
 
 Check {ffun 'I_4 * 'I_6 -> nat} : Type.
-Check [eqType of {ffun 'I_4 * 'I_6 -> nat}] : Type.
+Check (Equality.clone _ {ffun 'I_4 * 'I_6 -> nat}) : Type.
 
 From mathcomp Require Import all_algebra.
 Open Scope ring_scope.
