@@ -1,3 +1,5 @@
+
+Require PeanoNat.
 From mathcomp Require Import ssreflect ssrbool ssrfun eqtype ssrnat div.
 
 (*****************************************************************************)
@@ -223,7 +225,6 @@ Lemma concrete_plus_bis : 16 + 64 = 80.
 Proof. (* simpl. *)  by []. Qed.
 
 Print mult.
-
 Print le.
 
 Lemma concrete_le : le 1 3.

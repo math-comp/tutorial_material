@@ -21,7 +21,6 @@ Lemma tuto_unit_enumP : Finite.axiom [:: tt]. Proof. by case. Qed.
 #[verbose]
 HB.instance Definition _ := isFinite.Build unit1 tuto_unit_enumP.
 
-
 (******************************************************************************)
 (* Exercise 6.1.2                                                             *)
 (******************************************************************************)
@@ -79,7 +78,8 @@ Qed.
 (* Exercise 6.1.4                                                             *)
 (******************************************************************************)
 
-Check UniqFinMixin.
+
+Check Finite.uniq_enumP.
 
 Definition tuto_prod_enum (T1 T2 : finType) : seq (T1 * T2) :=
   foldr (fun x1 => cat (map (pair x1) (enum T2))) [::] (enum T1).

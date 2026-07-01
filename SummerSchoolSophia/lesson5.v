@@ -115,8 +115,10 @@ Proof.
 apply: (iffP idP).
   elim: n m => [|n IH] m; case: m => // m Hm.
   by rewrite (IH m Hm).
+(*
 move=> def_n; rewrite {}def_n.
 Undo.
+*)
 move=> ->. (* move + rewrie + clear idiom *)
 by elim: m.
 Qed.
@@ -148,8 +150,10 @@ About andP.
 Lemma example n m k : k <= n ->
   (n <= m) && (m <= k) -> n = k.
 Proof.
+(* 
 move=> lekn /andP H; case: H => lenm lemk.
 Undo.
+*)
 move=> lekn /andP[lenm lemk]. (* view + case idiom *)
 Abort.
 
@@ -220,7 +224,8 @@ by case split.
 
 #<div>#
 *)
-Print Bool.reflect.
+
+Print reflect.
 About andP.
 
 Lemma example_spec a b : a && b ==> (a == b).
@@ -282,8 +287,10 @@ About prime_gt1.
 
 Lemma example_2 x y  : prime x -> odd y -> 2 < y + x.
 Proof.
+(*
 move/prime_gt1 => x_gt_1. (* view through prime_gt1 *)
 Undo.
+*)
 move/prime_gt1/ltnW.
  
 Abort.
