@@ -34,18 +34,18 @@ license:
   identifier: MIT
 
 supported_rocq_versions:
-  text: '9.1 or later'
-  opam: '{(>= "9.1")}'
+  text: '9.2 or later'
+  opam: '{(>= "9.2")}'
 
 dependencies:
 - opam:
     name: coq-mathcomp-ssreflect
-    version: '{(>= "2.5.0")}'
+    version: '{(>= "2.6.0")}'
   description: |-
-    [MathComp ssreflect 2.5 or later](https://math-comp.github.io)
+    [MathComp ssreflect 2.6 or later](https://math-comp.github.io)
 
 tested_coq_opam_versions:
-- version: '2.5.0-rocq-prover-9.1'
+- version: '2.6.0-rocq-prover-9.2'
   repo: 'mathcomp/mathcomp'
 
 namespace: tutorial_material

@@ -36,7 +36,7 @@ of the tactic language, because the methodology is independent.
 
 (* == Reminder: large scale reflection *)
 
-From Coq Require Import ZArith.
+From Stdlib Require Import ZArith.
 
 Open Scope Z_scope.
 
@@ -72,7 +72,7 @@ a type equipped with a, possibly axiomatic and non-computational,
  ring structure into a type for polynomial expressions. *)
 
 
-Require Import Arith Ring.
+From Stdlib Require Import Arith Ring.
 
 Goal forall (n : nat) (b : bool) (f : bool -> nat), 
   n + (f b) * n + n * (n + 1) = n * (n + (f b)) + 2 * n. 
@@ -151,7 +151,7 @@ Qed.
 
 (* From now on, we will use the tactic extension. It is distributed 
 as part of the Coq proof assistant, and loaded by the following Import *)
-From Coq Require Import ssreflect.
+From Stdlib Require Import ssreflect.
 
 (* The extension implements an improved rewrite tactic language. We
 mention only two important features:
@@ -197,7 +197,7 @@ Features associated with this objective are:
    Demo: Prove that the concatenation (s1 ++ s2) of two lists is
    duplicate-free if and only if (s2 ++ s2) is also duplicate-free. **)
 
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
  Module ExerciseSeq.
 

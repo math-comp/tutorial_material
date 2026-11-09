@@ -1,5 +1,5 @@
 
-Require PeanoNat.
+From Stdlib Require PeanoNat.
 From mathcomp Require Import ssreflect ssrbool ssrfun eqtype ssrnat div.
 
 (*****************************************************************************)
@@ -239,7 +239,7 @@ Print leq.
 
 Print subn.
 
-Print subn_rec.
+Print Nat.sub.
 
 Lemma concrete_big_leq : 0 <= 51.
 Proof. by []. Qed.

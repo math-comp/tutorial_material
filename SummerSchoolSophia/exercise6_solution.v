@@ -1,4 +1,4 @@
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 Set Implicit Arguments.
 Unset Strict Implicit.
 Unset Printing Implicit Defensive.
@@ -135,7 +135,7 @@ Proof.
 (*D*)have /(congr1 (muln^~ (b ^ n))) := aB1_eq.
 (*D*)rewrite mulnBl mulnDl mul1n.
 (*D*)move=> /(congr1 (addn^~ (b ^ n - 1))).
-(*D*)rewrite addnBA ?expn_gt0 ?b_gt0// subnK; last first.
+(*D*)rewrite addnBA ?expn_gt0 ?b_gt0// subnK.
 (*D*)  by rewrite -[X in X <= _]mul1n leq_mul2r a_gt0 orbT.
 (*D*)rewrite -mulnA -expnS -addnA => ->.
 (*D*)rewrite edivn_eq addnBA ?expn_gt0 ?b_gt0//.
@@ -154,7 +154,7 @@ contains no prime number.
 #<div># *)
 Lemma ex5 n m : n`! + 2 <= m <= n`! + n -> ~~ prime m.
 Proof.
-(*D*)move=> m_in; move: (m_in); rewrite -[m](@subnKC n`!); last first.
+(*D*)move=> m_in; move: (m_in); rewrite -[m](@subnKC n`!).
 (*D*)  by rewrite (@leq_trans (n`! + 2)) ?leq_addr//; by case/andP: m_in.
 (*D*)set k := (_ - _); rewrite !leq_add2l => /andP[k_gt1 k_le_n].
 (*D*)apply/primePn; right; exists k.

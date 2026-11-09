@@ -1,5 +1,5 @@
 From HB Require Import structures.
-From mathcomp Require Import all_ssreflect. 
+From mathcomp Require Import boot. 
 
 
 (** *** Exercise 1:

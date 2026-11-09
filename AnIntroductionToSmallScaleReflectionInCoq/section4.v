@@ -72,7 +72,7 @@ end.
 (* Using the ssreflect pattern conditional this code can be shrinked *)
 (*into the actual program present in the seq library:*)
 Fixpoint alternate_tuto s1 s2 :=
-  if s1 is x :: s' then x :: (tuto_cat s' s2) else s2.
+  if s1 is x :: s' then x :: (alternate_tuto s' s2) else s2.
 
 
 (* The proof goes by induction on the first list. We do not need to be *)
@@ -97,7 +97,7 @@ Proof. by move=> x s1 s2; elim: s1 x => [|y s1 IHs] x //=; rewrite IHs. Qed.
 
 Fixpoint tuto_take n s {struct s} :=
   match s, n with
-  | x :: s', n'.+1 => x :: take n' s'
+  | x :: s', n'.+1 => x :: tuto_take n' s'
   | _, _ => [::]
   end.
 
@@ -107,7 +107,7 @@ Fixpoint tuto_take n s {struct s} :=
 (*allows more fixpoints further defined to decrease structurally *)
 Fixpoint tuto_drop n s {struct s} :=
   match s, n with
-  | _ :: s', n'.+1 => drop n' s'
+  | _ :: s', n'.+1 => tuto_drop n' s'
   | _, _ => s
   end.
 
@@ -142,7 +142,7 @@ Search _ (size (take _ _) = _).
 have Hns : n <= size s by apply: leq_trans (leq_addl _ _) (ltnW Hmn).
 rewrite !(size_takel Hns).
 (* We directly rewrite the condition proved forward *)
-have -> : m + n < n = false by rewrite ltnNge leq_addl.  
+have -> : (m + n < n) = false by rewrite ltnNge leq_addl.  
 rewrite size_drop.
 have -> :  m < size s - n by rewrite ltnNge leq_subLR -ltnNge addnC.
 by rewrite addnK catA.

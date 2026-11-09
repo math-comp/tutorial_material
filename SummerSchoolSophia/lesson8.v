@@ -1,5 +1,5 @@
 From HB Require Import structures.
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
@@ -238,14 +238,14 @@ Check (Finite.clone _ (#| 'I_4 | .-tuple bool)).
 Check {ffun 'I_4 * 'I_6 -> nat} : Type.
 Check (Equality.clone _ {ffun 'I_4 * 'I_6 -> nat}) : Type.
 
-From mathcomp Require Import all_algebra.
+From mathcomp Require Import algebra.
 Open Scope ring_scope.
 
 Print matrix.
 
 Section Rings.
 
-Variable R : ringType.
+Variable R : pzRingType.
 
 Check forall x : R, x * 1 == x.
 
