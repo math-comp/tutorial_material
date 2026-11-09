@@ -1,4 +1,4 @@
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 
 (** *** Exercise 1 :
@@ -263,7 +263,7 @@ Proof.
 (*D*)rewrite -{1}sum_gauss -doubleMr (big_morph _ (mulnDr _) (muln0 _)).
 (*D*)rewrite -{3}[n]muln1 -{3}[n]subn0 -sum_nat_const_nat.
 (*D*)rewrite -!doubleD -!big_split /=.
-(*D*)rewrite (eq_big_nat _ _ (_ : forall i, _ -> _ = i.+1 ^ 3 - i ^3)) => [|i H]; last first.
+(*D*)rewrite (eq_big_nat _ _ (_ : forall i, _ -> _ = i.+1 ^ 3 - i ^3)) => [i H|].
 (*D*)  rewrite -[LHS](addKn (i ^ 3)); congr (_ - _).
 (*D*)  by sring.
 (*D*)apply: etrans (_ : (n^3).*2 = _).

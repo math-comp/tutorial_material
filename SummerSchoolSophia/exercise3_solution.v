@@ -2,7 +2,7 @@
       #<a href='https://www-sop.inria.fr/teams/marelle/types18/cheatsheet.pdf'>https://www-sop.inria.fr/teams/marelle/types18/cheatsheet.pdf</a>#
 *)
 
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 Implicit Type p q r : bool.
 Implicit Type m n a b c : nat.

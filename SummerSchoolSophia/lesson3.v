@@ -1,5 +1,5 @@
 
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
@@ -38,10 +38,10 @@ apply: contraLR.
 rewrite -leqNgt.
 move=> leq_p_m.
 rewrite dvdn_addr.
-  by rewrite gtnNdvd // prime_gt1.
 (* Search _ dvdn factorial.*)
-apply: dvdn_fact.
-by rewrite leq_p_m prime_gt0.
+  apply: dvdn_fact.
+  by rewrite leq_p_m prime_gt0.
+by rewrite gtnNdvd // prime_gt1.
 Qed.
 (**
 #</div>#

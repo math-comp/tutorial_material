@@ -52,6 +52,8 @@ Search _ cat uniq.
 rewrite cat_uniq.
 Search _ uniq map.
 rewrite !map_inj_uniq.
+ + by move=> x y [].
+ + by move=> x y [].
  Search _ uniq Finite.enum.
  Search _ Finite.enum.
  + rewrite -!enumT.
@@ -61,8 +63,6 @@ rewrite !map_inj_uniq.
  case/mapP=> x hx -> /=.
  case/mapP.
  done.
- + by move=> x y [].
- + by move=> x y [].
 Qed.
 
 (* here is the clean script resulting from the proevious one *)
@@ -88,7 +88,7 @@ Lemma prod_enum_uniq : forall T1 T2, uniq (tuto_prod_enum T1 T2).
 Proof.
 move=> T1 T2; rewrite /tuto_prod_enum; move: (enum_uniq T1) (enum_uniq T2).
 elim: (enum T1) (enum T2)=> [|x1 l1 ihl1] l2 //=; case/andP=> hx1 uniq_l1 uniq_l2.
-rewrite cat_uniq ihl1 // andbT map_inj_uniq; last by move=> x y [].
+rewrite cat_uniq ihl1 // andbT map_inj_uniq; first by move=> x y [].
 rewrite uniq_l2 /=; apply/hasP=> [[u]] /= h1; case/mapP=> y l2y e.
 move: h1; rewrite e; elim: l1 hx1 {uniq_l1 ihl1} => [|x3 l3 ihl3 ] //=.
 rewrite in_cons negb_or; case/andP=> h1 h2.
@@ -205,7 +205,7 @@ by move=> h; apply/pred0P=> x /=; case Ax : (x \in A); rewrite ?andbF // h.
 Qed.
 
 Lemma tuto_subsetPn : forall A B,
-  reflect (exists2 x, x \in A & x \notin B) (~~ (A \subset B)).
+  reflect (exists2 x, (x \in A) & (x \notin B)) (~~ (A \subset B)).
 Proof.
 rewrite unlock.
 move=> A B; apply: (iffP idP).
@@ -553,7 +553,7 @@ End setOpsExos.
 Section MinSet.
 
 Variable T : finType.
-Notation sT := {set T}.
+Abbreviation sT := {set T}.
 
 Implicit Types A B C : sT.
 Implicit Type P : pred sT.

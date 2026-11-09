@@ -26,7 +26,7 @@ build: [make "-j%{jobs}%"]
 install: [make "install"]
 depends: [
   "coq" 
-  "coq-mathcomp-ssreflect" {(>= "2.5.0")}
+  "coq-mathcomp-ssreflect" {(>= "2.6.0")}
 ]
 
 tags: [

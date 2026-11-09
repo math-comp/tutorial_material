@@ -1,4 +1,4 @@
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 Module  easy.
 
@@ -74,7 +74,7 @@ Qed.
 
 Lemma implyP (b1 b2 : bool) : reflectl (b1 -> b2) (b1 ==> b2).
 Proof.
-(*D*)by case: b1; case: b2; [ left | right | left ..] => //= /(_ isT).
+(*D*)by (case: b1; case: b2; [ left | right | left ..]) => //= /(_ isT).
 Qed.
 
 End reflect1.

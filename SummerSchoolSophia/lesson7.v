@@ -1,5 +1,5 @@
 
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
@@ -431,8 +431,8 @@ Proof.
 About  big_morph.
 Fail rewrite big_morph.
 rewrite (big_morph _ (_ : {morph double : x y / x + y}) (_ : 0.*2 = 0)).
-- by [].
 - move=> x y; exact: doubleD.
+- by [].
 by [].
 Qed.
 

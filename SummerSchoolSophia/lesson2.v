@@ -1,5 +1,5 @@
 
-From mathcomp Require Import all_ssreflect.
+From mathcomp Require Import boot.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
@@ -160,7 +160,7 @@ Equality statement between tests reads as  "if and only if".
 
 Print Nat.sub.
 
-Lemma eqn_leq (m n : nat) : m == n = (m <= n) && (n <= m).
+Lemma eqn_leq (m n : nat) : (m == n) = (m <= n) && (n <= m).
 Abort.
 
 (**
@@ -171,7 +171,7 @@ Abort.
 #<div>#
 *)
 
-Lemma eqn_leq (m n : nat) : m == n = (m <= n <= m).
+Lemma eqn_leq (m n : nat) : (m == n) = (m <= n <= m).
 Abort.
 
 (**
@@ -248,16 +248,16 @@ Proof. by []. Qed.
 #<div>#
 *)
 
-Goal  3 < 3 = false.
+Goal  (3 < 3) = false.
 Proof. by []. Qed.
 
-Goal  4 <= 3 = false.
+Goal  (4 <= 3) = false.
 Proof. by []. Qed.
 
 Lemma leq0n n : 0 <= n.
 Proof. by []. Qed.
 
-Lemma ltn0 n : n.+1 <= 0 = false.
+Lemma ltn0 n : (n.+1 <= 0) = false.
 Proof. by []. Qed.
 
 Lemma ltnS m n : (m.+1 <= n.+1) = (m <= n).

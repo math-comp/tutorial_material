@@ -28,8 +28,24 @@ It contains
   - Laurent Théry
 - License: [MIT License](LICENSE)
 - Additional dependencies:
-  - [MathComp ssreflect 2.5 or later](https://math-comp.github.io)
+  - [MathComp ssreflect 2.6 or later](https://math-comp.github.io)
 - Rocq/Coq namespace: `tutorial_material`
 - Related publication(s): none
 
 ## Building and installation instructions
+
+To build and install manually, you need to make sure that all the
+libraries this development depends on are installed.  The easiest way to do that
+is still to rely on opam:
+
+``` shell
+git clone https://github.com/math-comp/tutorial_material.git
+cd tutorial_material
+opam repo add rocq-released https://rocq-prover.org/opam/released
+opam install --deps-only .
+make   # or make -j <number-of-cores-on-your-machine> 
+make install
+```
+
+
+
